@@ -12,6 +12,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// ========================= FRONT END ROUTES
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
@@ -22,6 +23,16 @@ app.get("/tables", function (req, res) {
 
 app.get("/reserve", function (req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+// ============================= API ROUTES
+
+app.get("/api/reservations", (req, res) => {
+  res.send("this will display all the reservations");
+});
+
+app.get("/api/tables", (req, res) => {
+  res.send("this will display all the tables");
 });
 
 app.listen(PORT, function () {
